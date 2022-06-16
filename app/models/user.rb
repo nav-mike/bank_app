@@ -9,4 +9,6 @@ class User < ApplicationRecord
 
   validates :password, confirmation: { if: :require_password? }, length: { minimum: 8, if: :require_password? }
   validates :password_confirmation, length: { minimum: 8, if: :require_password? }
+
+  has_many :accounts, dependent: :destroy
 end
