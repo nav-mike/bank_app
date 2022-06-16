@@ -10,13 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_16_153326) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_16_154843) do
   create_table "accounts", force: :cascade do |t|
     t.integer "user_id", null: false
     t.decimal "current_balance", default: "0.0", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_accounts_on_user_id"
+  end
+
+  create_table "money_transfers", force: :cascade do |t|
+    t.integer "sender_id", null: false
+    t.integer "receiver_id", null: false
+    t.decimal "amount", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["receiver_id"], name: "index_money_transfers_on_receiver_id"
+    t.index ["sender_id"], name: "index_money_transfers_on_sender_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -31,4 +41,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_16_153326) do
   end
 
   add_foreign_key "accounts", "users"
+  add_foreign_key "money_transfers", "receivers"
+  add_foreign_key "money_transfers", "senders"
 end
