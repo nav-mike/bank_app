@@ -94,6 +94,10 @@ GEM
       reline (>= 0.2.7)
     digest (3.1.0)
     erubi (1.10.0)
+    ffi (1.15.5)
+    ffi-compiler (1.0.1)
+      ffi (>= 1.0.0)
+      rake
     globalid (1.0.0)
       activesupport (>= 5.0)
     i18n (1.10.0)
@@ -177,6 +181,8 @@ GEM
       rack (>= 1.4)
     rexml (3.2.5)
     rubyzip (2.3.2)
+    scrypt (3.0.7)
+      ffi-compiler (>= 1.0, < 2.0)
     selenium-webdriver (4.2.1)
       childprocess (>= 0.5, < 5.0)
       rexml (~> 3.2, >= 3.2.5)
@@ -231,6 +237,7 @@ DEPENDENCIES
   puma (~> 5.0)
   rails (~> 7.0.3)
   redis (~> 4.0)
+  scrypt (~> 3.0)
   selenium-webdriver
   sprockets-rails
   sqlite3 (~> 1.4)
