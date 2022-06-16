@@ -15,9 +15,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_15_151353) do
     t.string "email", null: false
     t.string "crypted_password", null: false
     t.string "password_salt", null: false
+    t.string "persistence_token", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["persistence_token"], name: "index_users_on_persistence_token", unique: true
   end
 
 end

@@ -1,5 +1,7 @@
 class User < ApplicationRecord
-  acts_as_authentic
+  acts_as_authentic do |c|
+    c.crypto_provider = ::Authlogic::CryptoProviders::SCrypt
+  end
 
   validates :email, presence: true, uniqueness: { case_sensitive: false },
                     format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/, message: 'should look like an email address.' },
