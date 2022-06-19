@@ -10,6 +10,8 @@ class CreateUsers < ActiveRecord::Migration[7.0]
       t.string :persistence_token, null: false
       t.index :persistence_token, unique: true
 
+      t.integer :status, limit: 1, null: false, default: 0
+
       t.timestamps
     end
   end

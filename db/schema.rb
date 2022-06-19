@@ -14,6 +14,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_16_154843) do
   create_table "accounts", force: :cascade do |t|
     t.integer "user_id", null: false
     t.decimal "current_balance", default: "0.0", null: false
+    t.integer "status", limit: 1, default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_accounts_on_user_id"
@@ -34,6 +35,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_16_154843) do
     t.string "crypted_password", null: false
     t.string "password_salt", null: false
     t.string "persistence_token", null: false
+    t.integer "status", limit: 1, default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
