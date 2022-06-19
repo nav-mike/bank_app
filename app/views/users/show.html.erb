@@ -1,27 +1,33 @@
-<h1>Hello <%= current_user.email %>!</h1>
-<ul>
-  <% @user.accounts.each do |account| %>
-    <li>Account-<%= account.id %>: $<%= account.current_balance %></li>
-  <% end %>
-</ul>
+<h1>Hello <%= current_user.email %>! 👋</h1>
 
 <div>
-  <p>Income transfers</p>
+  <h3>Your accounts 💵:</h3>
+  <ul>
+    <% @user.accounts.each do |account| %>
+      <li>Account-<%= account.id %>: <span class="amount">$<%= account.current_balance %></span></li>
+    <% end %>
+  </ul>
+</div>
+
+<div>
+  <p>Income transfers 💰:</p>
   <ul>
     <% @incomes.each do |transfer| %>
       <li>
-        Transfer-<%= transfer.id %>: $<%= transfer.amount %> [from: <%= transfer.sender.user.email %> ]
+        ⬇️ Transfer-<%= transfer.id %>: <span class="amount">$<%= transfer.amount %></span>
+        <span class="transfer-user">[from: <%= transfer.sender.user.email %> ]</span>
       </li>
     <% end %>
   </ul>
 </div>
 
 <div>
-  <p>Expense transfers</p>
+  <p>Outcome transfers 💸:</p>
   <ul>
     <% @outcomes.each do |transfer| %>
       <li>
-        Transfer-<%= transfer.id %>: $<%= transfer.amount %> [from: <%= transfer.receiver.user.email %> ]
+        ⬆️ Transfer-<%= transfer.id %>: <span class="amount">$<%= transfer.amount %></span>
+        <span class="transfer-user">[from: <%= transfer.receiver.user.email %> ]</span>
       </li>
     <% end %>
   </ul>
