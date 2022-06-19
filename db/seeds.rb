@@ -12,3 +12,12 @@ bank = User.where(email: Rails.configuration.x.bank_email).first_or_create! do |
 end
 
 bank.accounts.create!(current_balance: 1_000_000_000) if bank.accounts.empty?
+
+# for ui
+user = Users::Create.call email: 'm.navrotskiy@gmail.com', password: '12345678', password_confirmation: '12345678'
+other_user = Users::Create.call email: 'mikhail.navrotskii@gmail.com', password: '12345678', password_confirmation: '12345678'
+MoneyTransfers::GiveCreditToUser.call(user.accounts.first&.id, 1_000)
+MoneyTransfers::GiveCreditToUser.call(other_user.accounts.first&.id, 1_000)
+
+2.times { MoneyTransfers::ToUser.call(other_user.accounts.first&.id, user.accounts.first&.id, [100, 200].sample) }
+MoneyTransfers::ToUser.call(user.accounts.first&.id, other_user.accounts.first&.id, 50)
