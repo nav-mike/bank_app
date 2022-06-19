@@ -1,1 +1,28 @@
-<h1>Hello user</h1>
+<h1>Hello <%= current_user.email %>!</h1>
+<ul>
+  <% @user.accounts.each do |account| %>
+    <li>Account-<%= account.id %>: $<%= account.current_balance %></li>
+  <% end %>
+</ul>
+
+<div>
+  <p>Income transfers</p>
+  <ul>
+    <% @incomes.each do |transfer| %>
+      <li>
+        Transfer-<%= transfer.id %>: $<%= transfer.amount %> [from: <%= transfer.sender.user.email %> ]
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<div>
+  <p>Expense transfers</p>
+  <ul>
+    <% @outcomes.each do |transfer| %>
+      <li>
+        Transfer-<%= transfer.id %>: $<%= transfer.amount %> [from: <%= transfer.receiver.user.email %> ]
+      </li>
+    <% end %>
+  </ul>
+</div>
