@@ -41,6 +41,4 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_16_154843) do
   end
 
   add_foreign_key "accounts", "users"
-  add_foreign_key "money_transfers", "receivers"
-  add_foreign_key "money_transfers", "senders"
 end
