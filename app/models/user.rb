@@ -13,4 +13,8 @@ class User < ApplicationRecord
   validates :password_confirmation, length: { minimum: 8, if: :require_password? }
 
   has_many :accounts, dependent: :destroy
+
+  def self.bank
+    find_by!(email: Rails.configuration.x.bank_email)
+  end
 end

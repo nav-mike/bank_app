@@ -7,4 +7,6 @@ class Account < ApplicationRecord
 
   has_many :sent_money_transfers, class_name: 'MoneyTransfer', dependent: :destroy, foreign_key: :sender_id
   has_many :received_money_transfers, class_name: 'MoneyTransfer', dependent: :destroy, foreign_key: :receiver_id
+
+  scope :bank_accounts, -> { where(user: User.bank) }
 end

@@ -18,5 +18,7 @@ module BankApp
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    config.x.bank_email = ENV.fetch('BANK_APP_BANK_EMAIL', 'bank@email.com')
   end
 end
