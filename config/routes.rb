@@ -6,4 +6,6 @@ Rails.application.routes.draw do
 
   resources :users
   resource :user_session
+
+  root 'users#show'
 end
