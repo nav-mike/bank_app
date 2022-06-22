@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   resources :users
   resource :user_session
+  resources :money_transfers, only: [:new, :create]
 
   root 'users#show'
 end
