@@ -14,6 +14,8 @@ class User < ApplicationRecord
 
   has_many :accounts, dependent: :destroy
 
+  scope :not_bank, -> { where.not(email: Rails.configuration.x.bank_email) }
+
   def self.bank
     find_by!(email: Rails.configuration.x.bank_email)
   end

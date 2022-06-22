@@ -1,0 +1,13 @@
+<h1>Create new transfer</h1>
+
+<%= form_for @money_transfer do |f| %>
+  <div class="form-control">
+    <%= f.label :amount %>
+    <%= f.text_field :amount %>
+  </div>
+  <div class="form-control">
+    <%= f.label :receiver %>
+    <%= f.select :receiver, @users %>
+  </div>
+  <%= f.submit :send %>
+<% end %>
