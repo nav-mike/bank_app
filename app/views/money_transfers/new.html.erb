@@ -6,8 +6,8 @@
     <%= f.text_field :amount %>
   </div>
   <div class="form-control">
-    <%= f.label :receiver %>
-    <%= f.select :receiver, @users %>
+    <%= f.label :receiver_id %>
+    <%= f.select :receiver_id, @users %>
   </div>
   <%= f.submit :send %>
 <% end %>
