@@ -6,8 +6,12 @@
     <%= f.text_field :amount %>
   </div>
   <div class="form-control">
+    <%= f.label :sender_id %>
+    <%= f.select :sender_id, @current_user_accounts %>
+  </div>
+  <div class="form-control">
     <%= f.label :receiver_id %>
-    <%= f.select :receiver_id, @users %>
+    <%= f.select :receiver_id, @other_user_accounts %>
   </div>
   <%= f.submit :send %>
 <% end %>
